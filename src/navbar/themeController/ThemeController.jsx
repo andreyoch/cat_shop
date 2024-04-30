@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { themeChange } from "theme-change";
 
 const ThemeController = () => {
   const [theme, setTheme] = useState('light');
@@ -10,7 +9,6 @@ const ThemeController = () => {
   }
 
   useEffect(() => {
-    themeChange(false);
     document.querySelector("html").setAttribute("data-theme", theme);
   }, [theme]);
   return (
