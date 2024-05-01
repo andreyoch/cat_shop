@@ -9,7 +9,7 @@ const ThemeController = () => {
     document.querySelector("html").setAttribute("data-theme", theme);
   }, [isDark]);
   return (
-    <label className="mr-10 flex cursor-pointer gap-2">
+    <label className="order-first sm:mr-10 pt-10 flex cursor-pointer  gap-2 sm:order-none">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
