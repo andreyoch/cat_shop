@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
 
 const ThemeController = () => {
-  const [theme, setTheme] = useState('light');
-
-  function toggleTheme() {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-  }
+  const [isDark, setIsDark] = useState(JSON.parse(localStorage.getItem("isDark")));
 
   useEffect(() => {
+    localStorage.setItem("isDark", isDark);
+    const theme = localStorage.getItem("isDark") === "true" ? "dark" : "light";
     document.querySelector("html").setAttribute("data-theme", theme);
-  }, [theme]);
+  }, [isDark]);
   return (
-    <label onClick={toggleTheme} className="mr-10 flex cursor-pointer gap-2">
+    <label className="mr-10 flex cursor-pointer gap-2">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
@@ -30,6 +27,8 @@ const ThemeController = () => {
       <input
         type="checkbox"
         className="theme-controller toggle"
+        checked={isDark}
+        onChange={() => setIsDark(!isDark)}
       />
       <svg
         xmlns="http://www.w3.org/2000/svg"
